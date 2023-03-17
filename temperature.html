@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style3.css">
+
+    <title>Temperature Converter Website</title>
+
+</head>
+
+<body>
+
+    <div class="Container">
+
+        <div class="temp-conv">
+
+            <h1 class="title">Temperature Converter</h1>
+
+            <div class="degree-type">
+
+                <div class="degree-field">
+
+                    <label for="degree"> Degrees:</label>
+
+                    <input type="number" name="degree" id="degree"/>
+
+                </div>
+
+                <div class="temp-field">
+
+                    <label for="temp-type">Type:</label>
+
+                    <select name="temperatures" id="temp-type" autocomplete="on">
+
+                        <option id="fahrenheit" value="fahrenheit">Fahrenheit</option>
+
+                        <option id="kelvin" value="kelvin">Kelvin</option>
+
+                    </select>
+
+                </div>
+
+                <div class="result">
+
+                    <span class="result-head">Result (Celsius)</span>
+
+                    <h2 class="celsius-value" id="celsius"></h2>
+
+                </div>
+
+            </div>
+
+            <button id="convert-btn">Convert</button><br/>
+
+        </div>
+
+    </div>
+
+ 
+
+    <script>
+
+ 
+
+        const celsiusElem = document.querySelector("#celsius");
+
+        const degree = document.querySelector("#degree");
+
+        const convertBtn = document.querySelector("#convert-btn");
+
+        const tempType = document.querySelector("#temp-type");
+
+ 
+
+        window.addEventListener("load", () => {
+
+            degree.value = "";
+
+            celsiusElem.innerHTML = "";
+
+        });
+
+ 
+
+        convertBtn.addEventListener("click", (e) => {
+
+            e.preventDefault();
+
+            convertToCelsius();
+
+        });
+
+ 
+
+        function convertToCelsius() {
+
+            let inputValue = degree.value;
+
+ 
+
+        if (tempType.value === "fahrenheit") {
+
+            const FahrenheitToCelsius = (inputValue - 32) * (5 / 9);
+
+            celsiusElem.innerHTML = `${FahrenheitToCelsius.toFixed(3)} &deg;c`;
+
+        } else if (tempType.value === "kelvin") {
+
+            const KelvinToCelsius = inputValue - 273.15;
+
+            celsiusElem.innerHTML = `${KelvinToCelsius.toFixed(3)} &deg;c`;
+
+        }
+
+       
+
+    }
+
+    </script>
+
+</body>
+</html>
